@@ -1,4 +1,35 @@
 <resources>
-    <string name="app_name">android-app-base</string>
+    <string name="app_name">App Base</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <string name="welcome">"Welcome !"</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="generic_error">Error Occurred</string>
+    <string name="unauthorized_msg">You are not authorized to perform this action.</string>
+    <string name="loading">Loading…</string>
+    <string name="log_out_msg">You have been logged out</string>
+    <string name="internet_error">Please connect to internet</string>
+    <string name="server_error">Server error</string>
+    <string name="bad_request">Bad request error</string>
+    <string name="connection_error">Unable to connect to server</string>
+    <string name="go_setting">Launch Settings</string>
+    <string name="exit_app">Exit App</string>
+    <string name="permission_req_title">All permissions are required</string>
+    <string name="permission_req_message">You need to accept all
+        permissions for the app to work properly.
+        Allow all permissions under [Setting] -> [Permission]
+    </string>
+    <string name="no_job_assigned">No tasks found</string>
+    <string name="logout">Logout</string>
+    <string name="ok">Ok</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="back">Back</string>
+    <string name="app_version_unsupported">Current app version not supported</string>
+    <string name="app_update_required">App update required</string>
+    <string name="app_update_label">Update App</string>
+
+
 </resources>

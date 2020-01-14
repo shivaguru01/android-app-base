@@ -6,11 +6,27 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/celias_regular</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="TextStyleRegular" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/celias_regular</item>
+    </style>
+    <style name="TextStyleMedium" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/celias_medium</item>
+    </style>
+    <style name="TextStyleBold" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/celias_bold</item>
+    </style>
+    <style name="TextStyleLight" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/celias_light</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
