@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:orientation="vertical"
+                                                   app:layout_constraintHorizontal_bias="0.5"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+
+    <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/fm_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="97dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:text="Welcome to"
+            app:layout_constraintTop_toBottomOf="@+id/fm_logo"
+            android:layout_width="wrap_content"
+            style="@style/welcome_text"
+            android:layout_height="wrap_content"
+            android:id="@+id/welcome"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+            android:text="@string/app_name"
+            app:layout_constraintTop_toBottomOf="@+id/welcome"
+            android:layout_width="wrap_content"
+            style="@style/app_name"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_app"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+            android:layout_width="@dimen/app_icon_width"
+            app:layout_constraintTop_toBottomOf="@+id/user_app"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="76dp"
+            android:layout_height="@dimen/app_icon_height"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:id="@+id/barcode"/>
+    <TextView
+            android:text="@string/by_company_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/by_company"
+            style="@style/by_company"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="56dp"/>
+    <ImageView
+            android:layout_width="@dimen/splash_logo_small"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/by_company"
+            android:layout_height="@dimen/splash_logo_small"
+            app:srcCompat="@mipmap/ic_launcher_round"
+            android:id="@+id/logo_small"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,4 +9,10 @@
     <dimen name="text_size_18sp">18sp</dimen>
     <dimen name="text_size_21sp">21sp</dimen>
 
+
+    <!-- splash screen -->
+    <dimen name="app_icon_height">100dp</dimen>
+    <dimen name="app_icon_width">100dp</dimen>
+    <dimen name="splash_logo_small">21dp</dimen>
+
 </resources>

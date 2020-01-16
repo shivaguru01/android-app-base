@@ -8,7 +8,7 @@
 
         <variable
                 name="dialogInfo"
-                type="com.app.base.model.AppDialogInfo"/>
+                type="com.app.core.model.AppDialogInfo"/>
     </data>
     <LinearLayout
             android:layout_width="match_parent"

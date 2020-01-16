@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App Base</string>
+    <string name="app_name">App Name</string>
     <string name="title_activity_main">MainActivity</string>
 
     <string name="welcome">"Welcome !"</string>
@@ -30,6 +30,7 @@
     <string name="app_version_unsupported">Current app version not supported</string>
     <string name="app_update_required">App update required</string>
     <string name="app_update_label">Update App</string>
+    <string name="by_company_name">Company Name</string>
 
 
 </resources>
