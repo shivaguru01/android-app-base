@@ -1,7 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
 
-    <!-- text & text size -->
+    <!-- text size -->
     <dimen name="text_size_10sp">10sp</dimen>
     <dimen name="text_size_12sp">12sp</dimen>
     <dimen name="text_size_14sp">14sp</dimen>
@@ -9,10 +9,23 @@
     <dimen name="text_size_18sp">18sp</dimen>
     <dimen name="text_size_21sp">21sp</dimen>
 
+    <!-- icon size -->
+    <dimen name="icon_small_size">24dp</dimen>
+    <dimen name="icon_normal_size">32dp</dimen>
+    <dimen name="icon_medium_size">40dp</dimen>
+
+    <!-- button -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_width">120dp</dimen>
 
     <!-- splash screen -->
     <dimen name="app_icon_height">100dp</dimen>
     <dimen name="app_icon_width">100dp</dimen>
-    <dimen name="splash_logo_small">21dp</dimen>
+    <dimen name="splash_logo_small">24dp</dimen>
+
+    <!-- login screen -->
+    <dimen name="login_header_margin_bottom">40dp</dimen>
+    <dimen name="login_header_margin_top">15dp</dimen>
+    <dimen name="text_view_max_width">300dp</dimen>
 
 </resources>

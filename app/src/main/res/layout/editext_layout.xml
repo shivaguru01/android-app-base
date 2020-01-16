@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_gravity="center_horizontal"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+
+    <TextView
+            tools:text="Enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textSize="16sp"
+            style="@style/TextStyleMedium"
+            android:id="@+id/label"/>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:background="@drawable/border_black"
+                  android:layout_height="wrap_content">
+
+        <ImageView
+                android:layout_width="@dimen/icon_medium_size"
+                android:layout_gravity="center_vertical"
+                android:padding="10dp"
+                android:id="@+id/icon"
+                style="@style/edit_text_content"
+                android:src="@drawable/phone"
+                android:layout_height="@dimen/icon_medium_size"/>
+
+        <EditText android:layout_width="160dp"
+                  android:id="@+id/content"
+                  android:letterSpacing="0.08"
+                  android:imeOptions="actionDone"
+                  android:textCursorDrawable="@drawable/cursor_edittext"
+                  android:backgroundTint="@android:color/transparent"
+                  android:layout_height="50dp"/>
+
+        <ImageView android:layout_width="@dimen/icon_medium_size"
+                   android:src="@drawable/cross"
+                   android:padding="10dp"
+                   android:id="@+id/clear"
+                   tools:visibility="visible"
+                   android:visibility="invisible"
+                   android:layout_gravity="center_vertical"
+                   android:layout_height="@dimen/icon_medium_size"/>
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="2dp"
+            android:layout_marginTop="3dp"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            tools:text="Number not registered"
+            style="@style/text_style_small_red_regular"
+            android:id="@+id/error_msg"/>
+
+
+</LinearLayout>

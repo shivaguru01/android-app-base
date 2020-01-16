@@ -16,8 +16,8 @@ object DialogUtils {
     fun showAppDialog(
         context: Context?,
         dialogInfo: AppDialogInfo,
-        actionOneClick: (() -> Unit)?,
-        actionTwoClick: (() -> Unit)?
+        actionLeftClick: (() -> Unit)?,
+        actionRightClick: (() -> Unit)?
     ): AlertDialog {
         lateinit var appDialogBinding: AppDialogBinding;
         lateinit var alertDialog: AlertDialog
@@ -38,13 +38,13 @@ object DialogUtils {
         appDialogView.findViewById<TextView>(R.id.action_left).let { textView ->
             textView.setOnClickListener {
                 alertDialog.dismiss()
-                actionOneClick?.invoke()
+                actionLeftClick?.invoke()
             }
         }
         appDialogView.findViewById<TextView>(R.id.action_right).run {
             setOnClickListener {
                 alertDialog.dismiss()
-                actionTwoClick?.invoke()
+                actionRightClick?.invoke()
             }
         }
         alertDialog = alertDialogBuilder.apply {

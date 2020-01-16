@@ -32,20 +32,27 @@ class SplashFragment : BaseFragment<SplashViewModel>() {
     }
 
     private fun navigate() {
-        // remove all callbacks
         handler.removeCallbacksAndMessages(null);
         if (getViewModel().isLoggedIn()) {
-            checkActivityStatus {
-                handler.postDelayed({
-                    //startActivity(Intent(context, TaskActivity::class.java))
-                }, 600)
-            }
+            launchHomeActivity()
         } else {
-            checkActivityStatus {
-                handler.postDelayed({
-                    //navigateTo(R.id.action_splashFragment_to_loginFragment)
-                }, 600)
-            }
+            launchLoginScreen()
+        }
+    }
+
+    private fun launchLoginScreen() {
+        checkActivityStatus {
+            handler.postDelayed({
+                navigateTo(R.id.action_splashFragment_to_loginPhoneFragment)
+            }, 800)
+        }
+    }
+
+    private fun launchHomeActivity() {
+        checkActivityStatus {
+            handler.postDelayed({
+                //startActivity(Intent(context, TaskActivity::class.java))
+            }, 800)
         }
     }
 

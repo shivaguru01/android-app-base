@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:id="@+id/page_footer"
+              android:layout_width="match_parent"
+              android:layout_alignParentBottom="true"
+              android:gravity="center_horizontal"
+              android:layout_gravity="bottom"
+              android:layout_marginBottom="30dp"
+              android:layout_height="wrap_content">
+
+    <include layout="@layout/button"/>
+
+    <TextView android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:padding="10dp"
+              android:clickable="true"
+              android:id="@+id/resend"
+              android:layout_marginTop="20dp"
+              style="@style/resend_code"
+              tools:visibility="visible"
+              android:visibility="invisible"
+              android:text="@string/resend_code"
+              tools:text="Resend Code"/>
+
+</LinearLayout>

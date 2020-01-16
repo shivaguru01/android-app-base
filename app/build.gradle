@@ -52,7 +52,7 @@ android {
         stage {
             dimension "mode"
             versionNameSuffix "-stage"
-            buildConfigField "String", "SERVER_URL", "\"https://stage-url.io\""
+            buildConfigField "String", "SERVER_URL", "\"https://logex-service-lastmile.stage-k8s.grofer.io/\""
         }
         prod {
             dimension "mode"
