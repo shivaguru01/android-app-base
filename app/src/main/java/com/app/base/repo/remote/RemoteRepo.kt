@@ -1,8 +1,8 @@
 package com.app.base.repo.remote
 
 import com.app.base.model.VerifyOtpResponse
-import com.grofers.firstmile.model.LoginRequest
-import com.grofers.firstmile.model.VerifyOtpRequest
+import com.app.base.model.LoginRequest
+import com.app.base.model.VerifyOtpRequest
 import io.reactivex.Single
 import retrofit2.Response
 import javax.inject.Inject

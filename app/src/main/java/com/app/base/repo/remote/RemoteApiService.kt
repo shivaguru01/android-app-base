@@ -1,7 +1,8 @@
 package com.app.base.repo.remote
 
+import com.app.base.model.LoginRequest
+import com.app.base.model.VerifyOtpRequest
 import com.app.base.model.VerifyOtpResponse
-import com.grofers.firstmile.model.*
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.Body

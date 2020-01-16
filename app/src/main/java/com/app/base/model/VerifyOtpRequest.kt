@@ -1,4 +1,4 @@
-package com.grofers.firstmile.model
+package com.app.base.model
 
 import com.google.gson.annotations.SerializedName
 

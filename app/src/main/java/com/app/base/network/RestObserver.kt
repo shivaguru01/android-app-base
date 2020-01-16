@@ -1,11 +1,11 @@
-package com.grofers.retail.warehouse.android.network
+package com.app.base.network
 
 import android.util.Log
 import com.app.base.common.APP_TAG
 import com.app.base.common.Utils
 import com.app.base.helper.ComponentHelper
 import com.app.base.model.ServerException
-import com.grofers.retail.warehouse.android.listeners.ResponseListener
+import com.app.base.listener.ResponseListener
 import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.Response
 import java.lang.ref.WeakReference

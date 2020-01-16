@@ -3,7 +3,6 @@ package com.app.base.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.app.base.App
-import com.grofers.firstmile.di.ApiModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector

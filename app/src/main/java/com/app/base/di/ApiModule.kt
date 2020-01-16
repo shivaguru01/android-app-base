@@ -1,4 +1,4 @@
-package com.grofers.firstmile.di
+package com.app.base.di
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -29,18 +29,20 @@ class ApiModule() {
     internal fun provideOkHttpClient(
         context: Context, httpRequestInterceptor: HttpRequestInterceptor
     ): OkHttpClient {
-        val httpClient = OkHttpClient.Builder()
-        if (BuildConfig.DEBUG) {
-            val httpLoggingInterceptor = HttpLoggingInterceptor()
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            httpClient.addInterceptor(httpLoggingInterceptor)
-            httpClient.addInterceptor(ChuckInterceptor(context))
+        OkHttpClient.Builder().run {
+            if (BuildConfig.DEBUG) {
+                val httpLoggingInterceptor = HttpLoggingInterceptor()
+                httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+                addInterceptor(httpLoggingInterceptor)
+                addInterceptor(ChuckInterceptor(context))
+            }
+            addInterceptor(httpRequestInterceptor)
+            connectTimeout(30, TimeUnit.SECONDS)
+            readTimeout(30, TimeUnit.SECONDS)
+            writeTimeout(30, TimeUnit.SECONDS)
+        }.also {
+            return@provideOkHttpClient it.build()
         }
-        httpClient.addInterceptor(httpRequestInterceptor)
-        httpClient.connectTimeout(30, TimeUnit.SECONDS)
-        httpClient.readTimeout(30, TimeUnit.SECONDS)
-        httpClient.writeTimeout(30, TimeUnit.SECONDS)
-        return httpClient.build()
     }
 
     @Provides
