@@ -124,6 +124,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation "com.github.bumptech.glide:okhttp3-integration:4.9.0"
 
+    // paging library
+    implementation 'android.arch.paging:runtime:1.0.1'
+
     // chuck
     debugApi "com.readystatesoftware.chuck:library:1.1.0"
     releaseApi "com.readystatesoftware.chuck:library-no-op:1.1.0"

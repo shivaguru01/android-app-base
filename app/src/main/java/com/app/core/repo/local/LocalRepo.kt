@@ -13,6 +13,7 @@ class LocalRepo @Inject constructor(
     }
 
     var accessToken: String? by sharedPreferences.string(ACCESS_TOKEN)
+
     var forceCreateService: Boolean by sharedPreferences.boolean(FORCE_CREATE_SERVICE)
 
 }
