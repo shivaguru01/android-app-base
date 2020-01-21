@@ -61,5 +61,11 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="recycler_item_screen_spacing" >
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_marginRight">12dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
 
 </resources>

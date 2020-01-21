@@ -15,7 +15,7 @@
             android:layout_height="match_parent">
 
         <TextView android:layout_width="match_parent"
-                  tools:text="Tasks - New"
+                  tools:text="Page Title"
                   android:id="@+id/page_title"
                   android:layout_marginStart="16dp"
                   android:visibility="gone"
@@ -31,7 +31,7 @@
                 android:id="@+id/input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_alignStart="@+id/page_title"
@@ -53,7 +53,7 @@
         <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_below="@+id/input_layout">
 
             <androidx.recyclerview.widget.RecyclerView
