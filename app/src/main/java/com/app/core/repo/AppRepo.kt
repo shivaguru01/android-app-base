@@ -1,16 +1,24 @@
 package com.app.core.repo
 
-import com.app.core.model.LoginRequest
-import com.app.core.model.VerifyOtpRequest
-import com.app.core.model.VerifyOtpResponse
+import android.util.Log
+import androidx.paging.DataSource
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.app.core.common.APP_TAG
+import com.app.core.helper.ComponentHelper
+import com.app.core.model.*
+import com.app.core.network.RestObserver
+import com.app.core.repo.boundary.RecyclerBoundaryCondition
 import com.app.core.repo.local.LocalRepo
 import com.app.core.repo.remote.RemoteRepo
+import com.app.core.viewmodel.LoginViewModel
 import io.reactivex.Single
 import retrofit2.Response
 import javax.inject.Inject
 
 class AppRepo @Inject constructor(
-    private val remoteRepo: RemoteRepo, private val localRepo: LocalRepo
+    private val remoteRepo: RemoteRepo,
+    private val localRepo: LocalRepo
 ) {
 
     fun generateOtp(loginRequest: LoginRequest): Single<Response<Void>> {
@@ -45,5 +53,17 @@ class AppRepo @Inject constructor(
         }
         return false
     }
+
+    fun searchRepos(
+        query: String
+    ): RecyclerResult {
+        Log.d(APP_TAG, "New query: $query")
+        val dataSourceFactory = localRepo.searchRepo(query)
+        val boundaryCallback = RecyclerBoundaryCondition(query, localRepo, remoteRepo)
+        val data = LivePagedListBuilder(dataSourceFactory,
+            PagedList.Config.Builder().setPageSize(20).setEnablePlaceholders(true).setPrefetchDistance(20).build()).build()
+        return RecyclerResult(data, boundaryCallback.exception)
+    }
+
 
 }

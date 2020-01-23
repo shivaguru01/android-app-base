@@ -52,7 +52,7 @@ android {
         stage {
             dimension "mode"
             versionNameSuffix "-stage"
-            buildConfigField "String", "SERVER_URL", "\"https://logex-service-lastmile.stage-k8s.grofer.io/\""
+            buildConfigField "String", "SERVER_URL", "\"https://jsonplaceholder.typicode.com/\""
         }
         prod {
             dimension "mode"
@@ -105,6 +105,11 @@ dependencies {
 
     // live data
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0-rc03"
+    // Extensions = ViewModel + LiveData
+
+    // Room
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
 
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'

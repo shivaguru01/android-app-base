@@ -1,5 +1,6 @@
-package com.app.core.ui
+package com.app.core.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import com.app.core.R
 import com.app.core.base.BaseFragment
 import com.app.core.model.Action
 import com.app.core.model.NetworkState
+import com.app.core.ui.HomeActivity
 import com.app.core.viewmodel.SplashViewModel
 import javax.inject.Inject
 
@@ -33,7 +35,7 @@ class SplashFragment : BaseFragment<SplashViewModel>() {
 
     private fun navigate() {
         handler.removeCallbacksAndMessages(null);
-        if (getViewModel().isLoggedIn()) {
+        if (getViewModel().isLoggedIn() || true) {
             launchHomeActivity()
         } else {
             launchLoginScreen()
@@ -51,7 +53,7 @@ class SplashFragment : BaseFragment<SplashViewModel>() {
     private fun launchHomeActivity() {
         checkActivityStatus {
             handler.postDelayed({
-                //startActivity(Intent(context, TaskActivity::class.java))
+                startActivity(Intent(context, HomeActivity::class.java))
             }, 800)
         }
     }

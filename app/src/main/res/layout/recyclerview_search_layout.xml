@@ -11,73 +11,88 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@color/screen_bg"
             android:layout_height="match_parent">
 
-        <TextView android:layout_width="match_parent"
-                  tools:text="Page Title"
-                  android:id="@+id/page_title"
-                  android:layout_marginStart="16dp"
-                  android:visibility="gone"
-                  tools:visibility="visible"
-                  android:textColor="@color/black"
-                  android:textSize="@dimen/text_size_16sp"
-                  style="@style/TextStyleMedium"
-                  android:layout_height="wrap_content"
-                  android:layout_marginBottom="10dp"
-                  android:layout_marginTop="10dp"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout"
+        <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_alignStart="@+id/page_title"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_below="@+id/page_title"
-                app:layout_constraintStart_toStartOf="parent">
-            <EditText
-                    android:id="@+id/search"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/search"
-                    android:imeOptions="actionSearch"
-                    android:textSize="14sp"
-                    android:inputType="textNoSuggestions"
-                    tools:text="Kotlin"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:id="@+id/app_bar"
+                layout="@layout/app_bar"/>
 
-        <FrameLayout
+        <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/input_layout">
+                style="@style/page_spacing"
+                android:background="@color/light_white"
+                android:layout_below="@+id/app_bar"
+                android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/list"
+            <TextView android:layout_width="match_parent"
+                      tools:text="Page Title"
+                      android:id="@+id/page_title"
+                      android:layout_marginStart="16dp"
+                      android:visibility="gone"
+                      tools:visibility="visible"
+                      android:textColor="@color/black"
+                      android:textSize="@dimen/text_size_16sp"
+                      style="@style/TextStyleMedium"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="10dp"
+                      android:layout_marginTop="10dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-            <TextView
-                    android:id="@+id/emptyTextMsg"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="16sp"
-                    tools:visibility="visible"
-                    android:visibility="gone"
-                    android:textColor="@color/light_black"
-                    style="@style/TextStyleRegular"
-                    android:text="@string/no_job_assigned"/>
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignStart="@+id/page_title"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_below="@+id/page_title"
+                    app:layout_constraintStart_toStartOf="parent">
 
-            <include layout="@layout/progress_bar"/>
+                <EditText
+                        android:id="@+id/searchEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/search"
+                        android:imeOptions="actionSearch"
+                        android:textSize="14sp"
+                        android:inputType="textNoSuggestions"
+                        tools:text="Kotlin"
+                        android:autofillHints="test"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        </FrameLayout>
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/input_layout">
 
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recylerListView"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                <TextView
+                        android:id="@+id/emptyTextMsg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        tools:visibility="visible"
+                        android:visibility="gone"
+                        android:textColor="@color/light_black"
+                        style="@style/TextStyleRegular"
+                        android:text="@string/no_job_assigned"/>
+
+                <include layout="@layout/progress_bar"/>
+
+            </FrameLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
 </layout>

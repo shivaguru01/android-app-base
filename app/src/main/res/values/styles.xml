@@ -24,7 +24,10 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
+    <style name="action_bar_style" parent="@style/TextStyleMedium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/light_white</item>
+    </style>
 
     <!--Splash Screen-->
     <style name="welcome_text" parent="@style/TextStyleMedium">
@@ -61,11 +64,17 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+
+    <!-- Recycler screen -->
     <style name="recycler_item_screen_spacing" >
         <item name="android:layout_marginLeft">12dp</item>
         <item name="android:layout_marginRight">12dp</item>
         <item name="android:layout_marginTop">12dp</item>
         <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <style name="page_spacing" >
+        <item name="android:padding">12dp</item>
     </style>
 
 </resources>

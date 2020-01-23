@@ -6,28 +6,18 @@ import com.app.core.common.Utils
 import com.app.core.helper.ComponentHelper
 import com.app.core.model.ServerException
 import com.app.core.listener.ResponseListener
+import com.google.gson.Gson
 import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.Response
 import java.lang.ref.WeakReference
 import java.net.HttpURLConnection.HTTP_OK
+import javax.inject.Inject
 
-abstract class RestObserver<R>(responseListener: ResponseListener) : DisposableSingleObserver<Response<R>>() {
-
-    private val networkListenerWeakReference: WeakReference<ResponseListener> = WeakReference(responseListener)
-
-    private var componentHelper: ComponentHelper?
+abstract class RestObserver<R>(private val componentHelper: ComponentHelper) : DisposableSingleObserver<Response<R>>() {
 
     protected abstract fun error(serverException: ServerException)
-
     protected abstract fun success(data: R?)
 
-    init {
-        this.componentHelper = Utils.getComponentHelper(networkListenerWeakReference.get()!!.getContext())
-    }
-
-    /**
-     *  http exceptions
-     */
     override fun onError(throwable: Throwable) {
         error(ServerException(message = throwable.message, throwable = throwable));
     }
@@ -37,11 +27,11 @@ abstract class RestObserver<R>(responseListener: ResponseListener) : DisposableS
     }
 
     private fun getErrorMessage(response: Response<R>): ServerException {
-        var serverException: ServerException? = null
+        var serverException: ServerException?
         try {
             serverException =
-                componentHelper?.getGson()!!.fromJson(
-                    response.errorBody()!!.charStream(),
+                componentHelper.getGson().fromJson(
+                    response.errorBody()?.charStream(),
                     ServerException::class.java
                 )
             return serverException

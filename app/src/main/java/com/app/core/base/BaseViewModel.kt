@@ -9,20 +9,23 @@ import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.ViewModel
 import com.app.core.BR
 import com.app.core.R
+import com.app.core.common.Utils
 import com.app.core.event.SingleLiveEvent
-import com.app.core.listener.ResponseListener
+import com.app.core.helper.ComponentHelper
 import com.app.core.model.Action
 import com.app.core.model.NetworkState
 import com.app.core.model.ServerException
 import com.app.core.repo.AppRepo
+import com.bumptech.glide.util.Util
 import io.reactivex.disposables.CompositeDisposable
+import okio.Utf8
 
 
 abstract class BaseViewModel(
     val appContext: Context,
     val sharedPreferences: SharedPreferences,
     val repo: AppRepo
-) : ViewModel(), Observable, ResponseListener {
+) : ViewModel(), Observable {
 
     protected val disposables = CompositeDisposable()
 
@@ -43,8 +46,6 @@ abstract class BaseViewModel(
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
         callbacks.add(callback)
     }
-
-    override fun getContext(): Context = appContext
 
     private fun notifyNetworkStatePropertyChanged() {
         notifyPropertyChanged(BR.networkState)
@@ -70,7 +71,7 @@ abstract class BaseViewModel(
     }
 
     protected fun getString(resId: Int): String {
-        return getContext().getString(resId)
+        return appContext.getString(resId)
     }
 
     protected fun setLoadingFailed(serverException: ServerException) {
@@ -87,6 +88,8 @@ abstract class BaseViewModel(
         disposables.clear()
         super.onCleared()
     }
+
+    protected fun getComponentHelper() = Utils.getComponentHelper(appContext)!!
 
     abstract fun setup(args: Bundle?)
 

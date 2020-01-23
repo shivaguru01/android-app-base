@@ -16,7 +16,7 @@ data class PermissionStatus(val pendingPermission: Array<String>) {
     override fun hashCode(): Int  = pendingPermission.contentHashCode()
 
     fun isAllPermissionGranted(): Boolean {
-        return pendingPermission == null || pendingPermission.isEmpty()
+        return pendingPermission.isNullOrEmpty()
     }
 
 }

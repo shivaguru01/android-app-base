@@ -20,6 +20,7 @@
             android:name="com.app.core.App"
             android:theme="@style/AppTheme">
 
+        <!-- Splash & Login Activity-->
         <activity
                 android:name="com.app.core.ui.MainActivity"
                 android:label="@string/title_activity_main"
@@ -31,6 +32,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Home Activity-->
+        <activity
+                android:name="com.app.core.ui.HomeActivity"
+                android:label="@string/title_activity_home"
+                android:windowSoftInputMode="adjustPan">
+        </activity>
 
     </application>
 

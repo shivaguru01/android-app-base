@@ -18,11 +18,9 @@ class NetworkState(
     annotation class Status
 
     override fun equals(other: Any?): Boolean {
-        other?.let {
-            if (other is NetworkState) {
-                val other = other as NetworkState?
-                val self = this
-                return other?.status == self.status
+        when (other) {
+            is NetworkState -> {
+                return other.status == this.status
             }
         }
         return false

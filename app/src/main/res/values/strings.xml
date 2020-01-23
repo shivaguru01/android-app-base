@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">App Name</string>
+
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
 
     <string name="welcome">"Welcome !"</string>
     <string name="login_failed">"Login failed"</string>
@@ -44,5 +46,7 @@
     <string name="login">Login</string>
     <string name="resending">Resending ...</string>
     <string name="search">Search</string>
+    <string name="page1">Page1</string>
+    <string name="page2">Page2</string>
 
 </resources>

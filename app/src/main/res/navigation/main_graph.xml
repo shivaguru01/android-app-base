@@ -4,7 +4,7 @@
             app:startDestination="@id/splashFragment">
 
     <!-- Splash fragment -->
-    <fragment android:id="@+id/splashFragment" android:name="com.app.core.ui.SplashFragment"
+    <fragment android:id="@+id/splashFragment" android:name="com.app.core.ui.fragment.SplashFragment"
               android:label="SplashFragment">
         <action android:id="@+id/action_splashFragment_to_loginPhoneFragment" app:destination="@id/loginPhoneFragment"
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
@@ -12,7 +12,7 @@
     </fragment>
 
     <!-- Login phone no fragment -->
-    <fragment android:id="@+id/loginPhoneFragment" android:name="com.app.core.ui.LoginPhoneFragment"
+    <fragment android:id="@+id/loginPhoneFragment" android:name="com.app.core.ui.fragment.LoginPhoneFragment"
               android:label="LoginPhoneFragment">
         <action android:id="@+id/action_loginPhoneFragment_to_loginOtpFragment" app:destination="@id/loginOtpFragment"
                 app:enterAnim="@anim/nav_default_pop_enter_anim" app:exitAnim="@anim/nav_default_pop_exit_anim"
@@ -20,7 +20,7 @@
     </fragment>
 
     <!-- Login otp fragment -->
-    <fragment android:id="@+id/loginOtpFragment" android:name="com.app.core.ui.LoginOtpFragment"
+    <fragment android:id="@+id/loginOtpFragment" android:name="com.app.core.ui.fragment.LoginOtpFragment"
               android:label="LoginOtpFragment"/>
 
 

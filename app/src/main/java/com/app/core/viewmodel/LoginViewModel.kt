@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import com.app.core.base.BaseViewModel
+import com.app.core.common.Utils
 import com.app.core.model.*
 import com.app.core.network.RestObserver
 import com.app.core.repo.AppRepo
@@ -45,7 +46,7 @@ constructor(appContext: Context, sharedPreferences: SharedPreferences, private v
             appRepo.generateOtp(LoginRequest(mobileNo))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : RestObserver<Void>(this) {
+                .subscribeWith(object : RestObserver<Void>(getComponentHelper()) {
                     override fun error(serverException: ServerException) {
                         setLoadingFailed(serverException)
                         sendEvent(
@@ -71,7 +72,7 @@ constructor(appContext: Context, sharedPreferences: SharedPreferences, private v
             appRepo.verifyOtp(VerifyOtpRequest(userMobileNo, otp))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : RestObserver<VerifyOtpResponse>(this) {
+                .subscribeWith(object : RestObserver<VerifyOtpResponse>(getComponentHelper()) {
                     override fun error(serverException: ServerException) {
                         setLoadingFailed(serverException)
                         sendEvent(

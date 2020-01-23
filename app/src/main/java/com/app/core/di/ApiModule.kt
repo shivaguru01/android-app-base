@@ -2,9 +2,12 @@ package com.app.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.room.Room
 import com.app.core.BuildConfig
+import com.app.core.helper.ComponentHelper
 import com.app.core.network.HttpRequestInterceptor
 import com.app.core.repo.AppRepo
+import com.app.core.repo.local.AppDatabase
 import com.app.core.repo.local.LocalRepo
 import com.app.core.repo.remote.RemoteApiService
 import com.app.core.repo.remote.RemoteRepo
@@ -76,13 +79,14 @@ class ApiModule() {
     }
 
     @Provides
-    internal fun providesLocalRepo(sharedPreferences: SharedPreferences): LocalRepo {
-        return LocalRepo(sharedPreferences = sharedPreferences)
+    internal fun providesLocalRepo(sharedPreferences: SharedPreferences, appDatabase: AppDatabase): LocalRepo {
+        return LocalRepo(sharedPreferences = sharedPreferences, database = appDatabase)
     }
 
     @Provides
-    internal fun providesRemoteRepo(apiService: RemoteApiService): RemoteRepo {
-        return RemoteRepo(apiService = apiService)
+    internal fun providesRemoteRepo(apiService: RemoteApiService, componentHelper: ComponentHelper): RemoteRepo {
+        return RemoteRepo(apiService = apiService, componentHelper = componentHelper)
     }
+
 
 }

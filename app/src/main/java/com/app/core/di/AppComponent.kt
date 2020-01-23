@@ -21,8 +21,4 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent : AndroidInjector<App> {
 
-    fun providesContext(): Context
-
-    fun providesSharedPref() : SharedPreferences
-
 }

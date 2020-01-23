@@ -10,7 +10,8 @@ import com.app.core.repo.AppRepo
 
 abstract class BaseRecyclerViewModel<T>(
     appContext: Context,
-    sharedPreferences: SharedPreferences, appRepo: AppRepo
+    sharedPreferences: SharedPreferences,
+    appRepo: AppRepo
 ) :
     BaseViewModel(appContext, sharedPreferences, appRepo) {
 

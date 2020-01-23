@@ -1,4 +1,4 @@
-package com.app.core.ui
+package com.app.core.ui.fragment
 
 import android.os.Bundle
 import android.text.InputFilter
@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import com.app.core.R
 import com.app.core.base.BaseFragment
 import com.app.core.common.AnimationUtils
