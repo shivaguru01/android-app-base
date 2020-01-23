@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.core.R
 import com.app.core.adapter.RecyclerAdapter
 import com.app.core.base.BaseFragment
+import com.app.core.common.APP_TAG
+import com.app.core.common.Utils
 import com.app.core.common.Utils.afterTextChanged
 import com.app.core.common.Utils.launchKeyboard
 import com.app.core.model.Action
 import com.app.core.model.NetworkState
 import com.app.core.model.RecyclerItem
+import com.app.core.model.ServerException
 import com.app.core.viewmodel.RecyclerViewModel
 import kotlinx.android.synthetic.main.recyclerview_search_layout.*
 import javax.inject.Inject
@@ -57,15 +60,21 @@ class PagedRecyclerFragment : BaseFragment<RecyclerViewModel>() {
     override fun observeViewModel() {
         super.observeViewModel()
         getViewModel().repos.observe(this, Observer<PagedList<RecyclerItem>> {
-            Log.d("Activity", "list: ${it?.size}")
+            Log.d(APP_TAG, "list: ${it?.size}")
             showEmptyList(it)
             adapter.submitList(it)
+        })
+        // need to connect to ecosystem
+        getViewModel().networkErrors.observe(this, Observer<ServerException?> { ex ->
+            ex?.let{
+                Utils.showToast(context, it.httpErrorCode.toString())
+            }
         })
     }
 
     private fun search(search: String) {
         search.trim().let { searchText ->
-            if (searchText.isNotEmpty()) {
+            if (searchText.isNotEmpty() && searchText.length > 2) {
                 recylerListView.scrollToPosition(0)
                 adapter.submitList(null)
                 recyclerViewModel.searchRepo(searchText)

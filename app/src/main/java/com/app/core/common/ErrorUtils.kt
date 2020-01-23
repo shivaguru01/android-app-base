@@ -25,7 +25,7 @@ object ErrorUtils {
             400 -> {
                 serverException.message ?: getStringFromResId(context, R.string.bad_request)
             }
-            ServerException.DEFAULT_ERROR_CODE -> {
+            ServerException.UNABLE_MAKE_NETWORK_CALLS -> {
                 // if its http error, lets check the throwable class to find
                 // out if its internet exception
                 // if its not internet error, we will throw a generic msg saying "unable to connect

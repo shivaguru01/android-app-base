@@ -1,17 +1,10 @@
 package com.app.core.network
 
-import android.util.Log
-import com.app.core.common.APP_TAG
-import com.app.core.common.Utils
 import com.app.core.helper.ComponentHelper
 import com.app.core.model.ServerException
-import com.app.core.listener.ResponseListener
-import com.google.gson.Gson
 import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.Response
-import java.lang.ref.WeakReference
 import java.net.HttpURLConnection.HTTP_OK
-import javax.inject.Inject
 
 abstract class RestObserver<R>(private val componentHelper: ComponentHelper) : DisposableSingleObserver<Response<R>>() {
 
@@ -27,17 +20,18 @@ abstract class RestObserver<R>(private val componentHelper: ComponentHelper) : D
     }
 
     private fun getErrorMessage(response: Response<R>): ServerException {
-        var serverException: ServerException?
-        try {
-            serverException =
-                componentHelper.getGson().fromJson(
+        return try {
+            // later add flag to build_config
+            if(true) {
+                ServerException(httpErrorCode = response.code(), message = response.message() )
+            }  else{
+                return componentHelper.getGson().fromJson(
                     response.errorBody()?.charStream(),
                     ServerException::class.java
                 )
-            return serverException
+            }
         } catch (ex: Exception) {
-            Log.e(APP_TAG, ex.message)
-            return ServerException("unable to read server response", errorCode = 500, status = "500")
+            ServerException(message = "server communication error", errorCode = 500, httpErrorCode = 500)
         }
     }
 

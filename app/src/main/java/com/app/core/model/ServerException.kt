@@ -5,21 +5,18 @@ import com.google.gson.annotations.SerializedName
 data class ServerException(
 
     @field:SerializedName("message")
-    override val message: String?,
-
-    @field:SerializedName("status")
-    val status: String? = "",
+    override val message: String? = "",
 
     @field:SerializedName("errorCode")
     val errorCode: Int? = 0,
 
-    @field:SerializedName("httpErrorcode")
-    val httpErrorCode: Int? = DEFAULT_ERROR_CODE,
+    @field:SerializedName("httpErrorCode")
+    var httpErrorCode: Int? = UNABLE_MAKE_NETWORK_CALLS,
 
     val throwable: Throwable? = null
 
 ) : Exception() {
     companion object {
-        const val DEFAULT_ERROR_CODE = -1
+        const val UNABLE_MAKE_NETWORK_CALLS = -1
     }
 }

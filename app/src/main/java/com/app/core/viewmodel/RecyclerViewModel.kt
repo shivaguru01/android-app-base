@@ -20,13 +20,13 @@ constructor(appContext: Context, sharedPreferences: SharedPreferences, private v
 
     private val queryLiveData = MutableLiveData<String>()
     private val repoResult: LiveData<RecyclerResult> = Transformations.map(queryLiveData, appRepo::searchRepos)
-    val repos: LiveData<PagedList<RecyclerItem>> = Transformations.switchMap(repoResult) { it.data }
-    val networkErrors: LiveData<ServerException> = Transformations.switchMap(repoResult) {
-        it.serverException
-    }.also {
-        it.value?.let {
-                ex -> setLoadingFailed(ex)
-        }
+
+    val repos: LiveData<PagedList<RecyclerItem>> = Transformations.switchMap(repoResult) { repoResult ->
+        repoResult.data
+    }
+
+    val networkErrors: LiveData<ServerException> = Transformations.switchMap(repoResult) { repoResult ->
+        repoResult.serverException
     }
 
     fun searchRepo(queryString: String) {

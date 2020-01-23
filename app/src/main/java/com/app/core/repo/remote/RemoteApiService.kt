@@ -19,8 +19,7 @@ interface RemoteApiService {
     @POST("api/verifyOtp")
     fun verifyOtp(@Body verifyOtpRequest: VerifyOtpRequest): Single<Response<VerifyOtpResponse>>
 
-
-    @GET("search/repositories?")
+    @GET("search/repositories")
     fun searchRepos(
         @Query("q") query: String,
         @Query("page") page: Int,

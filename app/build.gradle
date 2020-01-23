@@ -52,7 +52,7 @@ android {
         stage {
             dimension "mode"
             versionNameSuffix "-stage"
-            buildConfigField "String", "SERVER_URL", "\"https://jsonplaceholder.typicode.com/\""
+            buildConfigField "String", "SERVER_URL", "\"https://api.github.com/\""
         }
         prod {
             dimension "mode"
@@ -141,5 +141,7 @@ dependencies {
     // fire base analytics, crashlytics
     // implementation 'com.google.firebase:firebase-analytics:17.2.1'
     // implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+
+
 
 }

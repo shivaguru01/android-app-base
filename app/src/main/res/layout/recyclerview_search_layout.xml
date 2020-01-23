@@ -72,7 +72,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recylerListView"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
@@ -88,8 +87,6 @@
                         android:textColor="@color/light_black"
                         style="@style/TextStyleRegular"
                         android:text="@string/no_job_assigned"/>
-
-                <include layout="@layout/progress_bar"/>
 
             </FrameLayout>
         </RelativeLayout>

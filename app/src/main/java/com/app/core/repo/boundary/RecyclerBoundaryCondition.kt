@@ -21,16 +21,17 @@ constructor(
         private const val NETWORK_PAGE_SIZE = 50
     }
 
-    private var pageNumber = 1
     private val serverException = MutableLiveData<ServerException>()
-
+    private var isRequestInProgress = false
+    private var pageNumber = 1
     val exception: LiveData<ServerException>
         get() = serverException
 
-    private var isRequestInProgress = false
-
     override fun onZeroItemsLoaded() {
         requestAndSaveData(query)
+    }
+
+    override fun onItemAtFrontLoaded(itemAtFront: RecyclerItem) {
     }
 
     override fun onItemAtEndLoaded(itemAtEnd: RecyclerItem) {
@@ -48,7 +49,7 @@ constructor(
             }
             isRequestInProgress = false
         }, onError = { ex ->
-            serverException.postValue(ex)
+            serverException.value = ex
             isRequestInProgress = false
         })
     }
