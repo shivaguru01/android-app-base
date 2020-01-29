@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="album"
+                type="com.app.core.model.RecyclerItemAlbum"/>
+    </data>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            style="@style/recycler_item_screen_spacing" android:id="@+id/title_layout"
+            android:layout_height="wrap_content">
+
+        <ImageView android:id="@+id/icon"
+                   android:src="@color/light_blue"
+                   android:layout_alignParentStart="true"
+                   android:layout_height="@dimen/recycler_icon_size"
+                   android:layout_width="@dimen/recycler_icon_size"
+                   app:imageUrl="@{album.thumbnailUrl}"
+                   android:layout_centerVertical="true"
+                   android:contentDescription="icon"/>
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_toEndOf="@+id/icon"
+                android:layout_marginStart="12dp"
+                android:textSize="@dimen/text_size_16sp"
+                tools:text="Title"
+                android:text="@{album.title}"
+                android:textColor="@color/light_black"
+                style="@style/TextStyleBold"
+                android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/subtitle"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="@dimen/text_size_14sp"
+                  android:maxLength="20"
+                  android:layout_alignStart="@+id/title"
+                  android:layout_below="@+id/title"
+                  android:layout_marginTop="1dp"
+                  android:text="@{album.description}"
+                  android:textColor="@color/light_black"
+                  style="@style/TextStyleRegular"
+                  tools:text="any extra info here"/>
+
+    </RelativeLayout>
+</layout>

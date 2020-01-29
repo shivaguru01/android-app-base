@@ -38,13 +38,34 @@ class RemoteRepo @Inject constructor(
         apiService.searchRepos(query, page, itemsPerPage)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : RestObserver<RecyclerResponse>(componentHelper) {
+            .subscribeWith(object : RestObserver<RecyclerResponse<RecyclerItem>>(componentHelper) {
                 override fun error(serverException: ServerException) {
                     onError(serverException)
                 }
 
-                override fun success(data: RecyclerResponse?) {
+                override fun success(data: RecyclerResponse<RecyclerItem>?) {
                     onSuccess(data?.items)
+                }
+            })
+    }
+
+    fun getAlbums(
+        albumsId: Int,
+        onSuccess: (repos: List<RecyclerItemAlbum>?) -> Unit,
+        onError: (serverException: ServerException) -> Unit
+    ) {
+        // why is disposable not used
+        // side effects of not adding here
+        apiService.getAllPhotos(albumsId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(object : RestObserver<List<RecyclerItemAlbum>?>(componentHelper) {
+                override fun error(serverException: ServerException) {
+                    onError(serverException)
+                }
+
+                override fun success(data: List<RecyclerItemAlbum>?) {
+                    onSuccess(data)
                 }
             })
     }

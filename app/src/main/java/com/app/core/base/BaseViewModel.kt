@@ -30,7 +30,7 @@ abstract class BaseViewModel(
     protected val disposables = CompositeDisposable()
 
     @Bindable
-    val action: SingleLiveEvent<Action> = SingleLiveEvent()
+    public val action: SingleLiveEvent<Action> = SingleLiveEvent()
 
     @Bindable
     val networkState: SingleLiveEvent<NetworkState?> = SingleLiveEvent()

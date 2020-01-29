@@ -39,7 +39,7 @@ class AppModule(private val app : App) {
         return Room.databaseBuilder(
             context.applicationContext,
             AppDatabase::class.java, "${BuildConfig.APPLICATION_ID}.db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
 }

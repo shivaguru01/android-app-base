@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @Module
-class ApiModule() {
+class ApiModule {
 
     private var appRepo: AppRepo? = null
 

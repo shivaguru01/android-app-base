@@ -8,21 +8,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.PagedList
 import com.app.core.base.BaseViewModel
-import com.app.core.model.RecyclerItem
 import com.app.core.model.RecyclerItemAlbum
 import com.app.core.model.RecyclerResult
 import com.app.core.model.ServerException
 import com.app.core.repo.AppRepo
 import javax.inject.Inject
 
-class RecyclerViewModel @Inject
+class AlbumViewModel @Inject
 constructor(appContext: Context, sharedPreferences: SharedPreferences, private val appRepo: AppRepo) :
     BaseViewModel(appContext, sharedPreferences, appRepo) {
 
-    private val queryLiveData = MutableLiveData<String>()
-    private val repoResult: LiveData<RecyclerResult<RecyclerItem>> = Transformations.map(queryLiveData, appRepo::searchRepos)
+    private val repoResult: MutableLiveData<RecyclerResult<RecyclerItemAlbum>> = MutableLiveData()
 
-    val repos: LiveData<PagedList<RecyclerItem?>> = Transformations.switchMap(repoResult) { repoResult ->
+    val repos: LiveData<PagedList<RecyclerItemAlbum?>> = Transformations.switchMap(repoResult) { repoResult ->
         repoResult.data
     }
 
@@ -30,12 +28,8 @@ constructor(appContext: Context, sharedPreferences: SharedPreferences, private v
         repoResult.serverException
     }
 
-    fun searchRepo(queryString: String) {
-        queryLiveData.postValue(queryString)
-    }
-
     override fun setup(args: Bundle?) {
-
+        repoResult.value = appRepo.getAllAlbums()
     }
 
 }

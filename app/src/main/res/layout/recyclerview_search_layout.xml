@@ -88,6 +88,8 @@
                         style="@style/TextStyleRegular"
                         android:text="@string/no_job_assigned"/>
 
+                <include layout="@layout/progress_bar"/>
+
             </FrameLayout>
         </RelativeLayout>
     </RelativeLayout>

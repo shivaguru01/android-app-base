@@ -24,6 +24,12 @@ interface RemoteApiService {
         @Query("q") query: String,
         @Query("page") page: Int,
         @Query("per_page") itemsPerPage: Int
-    ): Single<Response<RecyclerResponse>>
+    ): Single<Response<RecyclerResponse<RecyclerItem>>>
+
+    @GET("/photos")
+    fun getAllPhotos(
+        @Query("albumId") query: Int
+    ): Single<Response<List<RecyclerItemAlbum>?>>
+
 
 }

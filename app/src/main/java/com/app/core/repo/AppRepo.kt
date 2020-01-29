@@ -4,11 +4,9 @@ import android.util.Log
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.app.core.common.APP_TAG
-import com.app.core.model.LoginRequest
-import com.app.core.model.RecyclerResult
-import com.app.core.model.VerifyOtpRequest
-import com.app.core.model.VerifyOtpResponse
-import com.app.core.repo.boundary.RecyclerBoundaryCondition
+import com.app.core.model.*
+import com.app.core.repo.boundary.AlbumBoundaryCondition
+import com.app.core.repo.boundary.RepoBoundaryCondition
 import com.app.core.repo.local.LocalRepo
 import com.app.core.repo.remote.RemoteRepo
 import io.reactivex.Single
@@ -53,15 +51,31 @@ class AppRepo @Inject constructor(
         return false
     }
 
-    fun searchRepos(
+   fun searchRepos(
         query: String
-    ): RecyclerResult {
+    ): RecyclerResult<RecyclerItem> {
         Log.d(APP_TAG, "New query: $query")
         val dataSourceFactory = localRepo.searchRepo(query)
-        val boundaryCallback = RecyclerBoundaryCondition(query, localRepo, remoteRepo)
+        val boundaryCallback = RepoBoundaryCondition(localRepo, remoteRepo)
         val data = LivePagedListBuilder(
             dataSourceFactory,
             PagedList.Config.Builder().setPageSize(20).setEnablePlaceholders(true).setPrefetchDistance(20).build()
+        ).setBoundaryCallback(boundaryCallback).build()
+        return RecyclerResult(data, boundaryCallback.exception)
+    }
+
+    fun getAllAlbums(
+    ): RecyclerResult<RecyclerItemAlbum> {
+        Log.d(APP_TAG, "Album api hit")
+        val dataSourceFactory = localRepo.getAllAlbum()
+        val boundaryCallback = AlbumBoundaryCondition(localRepo, remoteRepo)
+        val data = LivePagedListBuilder(
+            dataSourceFactory,
+            PagedList.Config.Builder()
+                .setPageSize(20)
+                .setEnablePlaceholders(true)
+                .setPrefetchDistance(20)
+                .build()
         ).setBoundaryCallback(boundaryCallback).build()
         return RecyclerResult(data, boundaryCallback.exception)
     }

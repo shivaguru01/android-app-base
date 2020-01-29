@@ -16,7 +16,8 @@ class BindUtils {
                 if (imageView.getTag(R.id.image_url) == null || imageView.getTag(R.id.image_url) != imageUrl) {
                     imageView.setImageBitmap(null)
                     imageView.setTag(R.id.image_url, imageUrl)
-                    Glide.with(imageView).load(imageUrl).into(imageView)
+                    Glide.with(imageView).load(imageUrl)
+                        .placeholder(R.color.green).into(imageView)
                 }
             } else {
                 imageView.setTag(R.id.image_url, null)

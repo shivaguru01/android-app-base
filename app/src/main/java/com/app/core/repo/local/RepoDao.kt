@@ -14,7 +14,7 @@ interface RepoDao {
 
     @Query(
         "SELECT * FROM repo WHERE (name LIKE :queryString) OR (description LIKE " +
-                ":queryString) ORDER BY name ASC"
+                ":queryString) ORDER BY id ASC"
     )
     fun searchRepoByName(queryString: String): androidx.paging.DataSource.Factory<Int, RecyclerItem>
 
